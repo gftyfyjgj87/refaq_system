@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>نظام إدارة الفروع - أكاديمية رفاق</title>
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/fixes.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    
+    <!-- PWA Manifest -->
+    <link rel="manifest" href="manifest.json">
+    
+    <!-- PWA Meta Tags -->
+    <meta name="theme-color" content="#4ECDC4">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <meta name="apple-mobile-web-app-title" content="إدارة الفروع">
+    
+    <!-- Apple Touch Icons -->
+    <link rel="apple-touch-icon" href="icons/icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="icons/icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="96x96" href="icons/icon-96x96.png">
+    <link rel="apple-touch-icon" sizes="128x128" href="icons/icon-128x128.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="icons/icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="icons/icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="192x192" href="icons/icon-192x192.png">
+    <link rel="apple-touch-icon" sizes="384x384" href="icons/icon-384x384.png">
+    <link rel="apple-touch-icon" sizes="512x512" href="icons/icon-512x512.png">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" sizes="32x32" href="icons/icon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="icons/icon-16x16.png">
+    
+    <!-- Microsoft Tiles -->
+    <meta name="msapplication-TileColor" content="#4ECDC4">
+    <meta name="msapplication-TileImage" content="icons/icon-144x144.png">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="header-container">
+            <!-- Notifications -->
+            <button class="notification-btn" id="notificationBtn">
+                <span class="notification-icon">!</span>
+                <span class="notification-badge">3</span>
+            </button>
+            
+            <!-- Dark/Light Mode Toggle -->
+            <button class="theme-toggle" id="themeToggle">
+                <span class="theme-icon">🌙</span>
+            </button>
+            
+            <!-- Logo -->
+            <div class="logo">
+                <div class="logo-icon">🏫</div>
+            </div>
+            
+            <!-- Menu -->
+            <button class="menu-btn" id="menuBtn">
+                <span class="menu-icon">☰</span>
+            </button>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Hero Card -->
+        <div class="hero-card">
+            <div class="hero-content">
+                <h1 class="hero-title">إدارة الفروع</h1>
+                <p class="hero-description">إدارة شاملة لجميع فروع المؤسسة التعليمية</p>
+                <button class="hero-btn" id="addBranchBtn">
+                    <span class="btn-icon">+</span>
+                    <span class="btn-text">إضافة فرع جديد</span>
+                </button>
+            </div>
+        </div>
+
+        <!-- Search Bar -->
+        <div class="search-container">
+            <div class="search-bar">
+                <input type="text" class="search-input" placeholder="البحث في الفروع..." id="searchInput">
+                <span class="search-icon">🔍</span>
+            </div>
+            <div class="filter-badge">
+                <span class="badge-text">5 فرع</span>
+            </div>
+        </div>
+
+        <!-- Branch Cards -->
+        <div class="cards-container" id="branchCards">
+            <!-- Branch Card 1 -->
+            <div class="branch-card">
+                <div class="card-header">
+                    <div class="branch-info">
+                        <div class="branch-icon">🏢</div>
+                        <div class="branch-details">
+                            <h3 class="branch-name">الفرع الرئيسي</h3>
+                            <span class="branch-code">MAIN001</span>
+                        </div>
+                    </div>
+                    <div class="status-badge active">نشط</div>
+                </div>
+                
+                <div class="card-body">
+                    <div class="branch-manager">
+                        <span class="manager-icon">👤</span>
+                        <span class="manager-name">أحمد محمد</span>
+                    </div>
+                    
+                    <div class="branch-address">
+                        <span class="address-icon">📍</span>
+                        <span class="address-text">شارع التحرير، القاهرة</span>
+                    </div>
+                    
+                    <div class="branch-stats">
+                        <div class="stat-item">
+                            <span class="stat-icon">👨‍🏫</span>
+                            <span class="stat-number">12</span>
+                            <span class="stat-label">معلم</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-icon">👨‍🎓</span>
+                            <span class="stat-number">85</span>
+                            <span class="stat-label">طالب</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-icon">📚</span>
+                            <span class="stat-number">8</span>
+                            <span class="stat-label">مجموعة</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="card-actions">
+                    <button class="action-btn edit-btn">تعديل</button>
+                    <button class="action-btn view-btn">عرض</button>
+                </div>
+            </div>
+
+            <!-- Branch Card 2 -->
+            <div class="branch-card">
+                <div class="card-header">
+                    <div class="branch-info">
+                        <div class="branch-icon">🏢</div>
+                        <div class="branch-details">
+                            <h3 class="branch-name">فرع النزهة</h3>
+                            <span class="branch-code">NZH002</span>
+                        </div>
+                    </div>
+                    <div class="status-badge active">نشط</div>
+                </div>
+                
+                <div class="card-body">
+                    <div class="branch-manager">
+                        <span class="manager-icon">👤</span>
+                        <span class="manager-name">فاطمة علي</span>
+                    </div>
+                    
+                    <div class="branch-address">
+                        <span class="address-icon">📍</span>
+                        <span class="address-text">شارع النزهة، القاهرة</span>
+                    </div>
+                    
+                    <div class="branch-stats">
+                        <div class="stat-item">
+                            <span class="stat-icon">👨‍🏫</span>
+                            <span class="stat-number">8</span>
+                            <span class="stat-label">معلم</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-icon">👨‍🎓</span>
+                            <span class="stat-number">62</span>
+                            <span class="stat-label">طالب</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-icon">📚</span>
+                            <span class="stat-number">6</span>
+                            <span class="stat-label">مجموعة</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="card-actions">
+                    <button class="action-btn edit-btn">تعديل</button>
+                    <button class="action-btn view-btn">عرض</button>
+                </div>
+            </div>
+
+            <!-- Branch Card 3 -->
+            <div class="branch-card">
+                <div class="card-header">
+                    <div class="branch-info">
+                        <div class="branch-icon">🏢</div>
+                        <div class="branch-details">
+                            <h3 class="branch-name">فرع المعادي</h3>
+                            <span class="branch-code">MAD003</span>
+                        </div>
+                    </div>
+                    <div class="status-badge inactive">متوقف</div>
+                </div>
+                
+                <div class="card-body">
+                    <div class="branch-manager">
+                        <span class="manager-icon">👤</span>
+                        <span class="manager-name">محمد حسن</span>
+                    </div>
+                    
+                    <div class="branch-address">
+                        <span class="address-icon">📍</span>
+                        <span class="address-text">شارع 9، المعادي</span>
+                    </div>
+                    
+                    <div class="branch-stats">
+                        <div class="stat-item">
+                            <span class="stat-icon">👨‍🏫</span>
+                            <span class="stat-number">5</span>
+                            <span class="stat-label">معلم</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-icon">👨‍🎓</span>
+                            <span class="stat-number">28</span>
+                            <span class="stat-label">طالب</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-icon">📚</span>
+                            <span class="stat-number">3</span>
+                            <span class="stat-label">مجموعة</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="card-actions">
+                    <button class="action-btn edit-btn">تعديل</button>
+                    <button class="action-btn activate-btn">تفعيل</button>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Bottom Navigation -->
+    <nav class="bottom-nav">
+        <div class="nav-container">
+            <a href="#" class="nav-item">
+                <span class="nav-icon">🏠</span>
+                <span class="nav-label">الرئيسية</span>
+            </a>
+            
+            <a href="#" class="nav-item">
+                <span class="nav-icon">👨‍🏫</span>
+                <span class="nav-label">المعلمين</span>
+            </a>
+            
+            <a href="#" class="nav-item">
+                <span class="nav-icon">💳</span>
+                <span class="nav-label">الباقات</span>
+            </a>
+            
+            <a href="#" class="nav-item active">
+                <span class="nav-icon">🏢</span>
+                <span class="nav-label">الفروع</span>
+            </a>
+            
+            <a href="#" class="nav-item">
+                <span class="nav-icon">⚙️</span>
+                <span class="nav-label">المزيد</span>
+            </a>
+        </div>
+    </nav>
+
+    <!-- Add Branch Modal -->
+    <div class="modal-overlay" id="addBranchModal">
+        <div class="modal">
+            <div class="modal-header">
+                <h2 class="modal-title">إضافة فرع جديد</h2>
+                <button class="modal-close" id="closeModal">×</button>
+            </div>
+            
+            <div class="modal-body">
+                <div class="form-group">
+                    <label class="form-label">اسم الفرع</label>
+                    <input type="text" class="form-input" placeholder="مثال: فرع الزمالك">
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label">كود الفرع</label>
+                    <input type="text" class="form-input" placeholder="مثال: ZAM004">
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label">مدير الفرع</label>
+                    <input type="text" class="form-input" placeholder="اسم مدير الفرع">
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label">العنوان</label>
+                    <textarea class="form-textarea" placeholder="عنوان الفرع التفصيلي"></textarea>
+                </div>
+            </div>
+            
+            <div class="modal-actions">
+                <button class="modal-btn cancel-btn" id="cancelBtn">إلغاء</button>
+                <button class="modal-btn save-btn" id="saveBtn">حفظ</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="scripts/main.js"></script>
+</body>
+</html>

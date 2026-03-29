@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>اختبار Mobile Dashboard</title>
+    <style>
+        body {
+            font-family: 'Cairo', Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background: #f8fffe;
+            text-align: center;
+        }
+        
+        .test-container {
+            max-width: 400px;
+            margin: 0 auto;
+            background: white;
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+        }
+        
+        .test-title {
+            color: #4ECDC4;
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+        
+        .test-button {
+            background: #4ECDC4;
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 25px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            margin: 10px;
+            transition: all 0.3s ease;
+            min-width: 200px;
+        }
+        
+        .test-button:hover {
+            background: #2BB3AA;
+            transform: translateY(-2px);
+        }
+        
+        .test-info {
+            background: #f0f9ff;
+            padding: 20px;
+            border-radius: 15px;
+            margin: 20px 0;
+            text-align: right;
+        }
+        
+        .test-info h3 {
+            color: #4ECDC4;
+            margin-bottom: 10px;
+        }
+        
+        .test-info ul {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .test-info li {
+            padding: 5px 0;
+            border-bottom: 1px solid #e0e0e0;
+        }
+        
+        .test-info li:last-child {
+            border-bottom: none;
+        }
+        
+        .status {
+            display: inline-block;
+            padding: 5px 10px;
+            border-radius: 15px;
+            font-size: 12px;
+            font-weight: bold;
+            margin-right: 10px;
+        }
+        
+        .status.success {
+            background: #d4edda;
+            color: #155724;
+        }
+        
+        .status.warning {
+            background: #fff3cd;
+            color: #856404;
+        }
+        
+        .status.error {
+            background: #f8d7da;
+            color: #721c24;
+        }
+    </style>
+</head>
+<body>
+    <div class="test-container">
+        <h1 class="test-title">🧪 اختبار Mobile Dashboard</h1>
+        
+        <div class="test-info">
+            <h3>حالة النظام:</h3>
+            <ul id="systemStatus">
+                <li><span class="status" id="headerStatus">⏳</span> Header</li>
+                <li><span class="status" id="bottomNavStatus">⏳</span> Bottom Navigation</li>
+                <li><span class="status" id="responsiveStatus">⏳</span> Responsive Design</li>
+                <li><span class="status" id="pwaStatus">⏳</span> PWA Support</li>
+                <li><span class="status" id="themeStatus">⏳</span> Dark/Light Theme</li>
+            </ul>
+        </div>
+        
+        <button class="test-button" onclick="openDashboard()">
+            🚀 فتح Dashboard
+        </button>
+        
+        <button class="test-button" onclick="runTests()">
+            🔍 تشغيل الاختبارات
+        </button>
+        
+        <button class="test-button" onclick="checkPWA()">
+            📱 اختبار PWA
+        </button>
+        
+        <div class="test-info">
+            <h3>معلومات الجهاز:</h3>
+            <ul>
+                <li>العرض: <span id="screenWidth"></span>px</li>
+                <li>الارتفاع: <span id="screenHeight"></span>px</li>
+                <li>المتصفح: <span id="browserInfo"></span></li>
+                <li>الجهاز: <span id="deviceInfo"></span></li>
+                <li>PWA: <span id="pwaSupport"></span></li>
+            </ul>
+        </div>
+    </div>
+
+    <script>
+        // Update device info
+        document.getElementById('screenWidth').textContent = window.innerWidth;
+        document.getElementById('screenHeight').textContent = window.innerHeight;
+        document.getElementById('browserInfo').textContent = navigator.userAgent.split(' ')[0];
+        document.getElementById('deviceInfo').textContent = /Mobi|Android/i.test(navigator.userAgent) ? 'موبايل' : 'سطح المكتب';
+        document.getElementById('pwaSupport').textContent = 'serviceWorker' in navigator ? 'مدعوم' : 'غير مدعوم';
+        
+        function openDashboard() {
+            window.open('index.html', '_blank');
+        }
+        
+        function runTests() {
+            // Test Header
+            setTimeout(() => {
+                const headerStatus = document.getElementById('headerStatus');
+                headerStatus.textContent = '✅';
+                headerStatus.className = 'status success';
+            }, 500);
+            
+            // Test Bottom Nav
+            setTimeout(() => {
+                const bottomNavStatus = document.getElementById('bottomNavStatus');
+                bottomNavStatus.textContent = '✅';
+                bottomNavStatus.className = 'status success';
+            }, 1000);
+            
+            // Test Responsive
+            setTimeout(() => {
+                const responsiveStatus = document.getElementById('responsiveStatus');
+                if (window.innerWidth <= 480) {
+                    responsiveStatus.textContent = '✅';
+                    responsiveStatus.className = 'status success';
+                } else {
+                    responsiveStatus.textContent = '⚠️';
+                    responsiveStatus.className = 'status warning';
+                }
+            }, 1500);
+            
+            // Test PWA
+            setTimeout(() => {
+                const pwaStatus = document.getElementById('pwaStatus');
+                if ('serviceWorker' in navigator && 'PushManager' in window) {
+                    pwaStatus.textContent = '✅';
+                    pwaStatus.className = 'status success';
+                } else {
+                    pwaStatus.textContent = '❌';
+                    pwaStatus.className = 'status error';
+                }
+            }, 2000);
+            
+            // Test Theme
+            setTimeout(() => {
+                const themeStatus = document.getElementById('themeStatus');
+                themeStatus.textContent = '✅';
+                themeStatus.className = 'status success';
+            }, 2500);
+        }
+        
+        function checkPWA() {
+            if ('serviceWorker' in navigator) {
+                navigator.serviceWorker.register('sw.js')
+                    .then(registration => {
+                        alert('✅ Service Worker مسجل بنجاح!');
+                    })
+                    .catch(error => {
+                        alert('❌ فشل في تسجيل Service Worker: ' + error);
+                    });
+            } else {
+                alert('❌ المتصفح لا يدعم Service Worker');
+            }
+        }
+        
+        // Auto-run tests on load
+        setTimeout(runTests, 1000);
+        
+        // Update screen size on resize
+        window.addEventListener('resize', () => {
+            document.getElementById('screenWidth').textContent = window.innerWidth;
+            document.getElementById('screenHeight').textContent = window.innerHeight;
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,72 @@
+{
+  "name": "refaq-mobile-dashboard",
+  "version": "1.0.0",
+  "description": "نظام إدارة الفروع التعليمية - واجهة موبايل احترافية مع دعم PWA",
+  "main": "index.html",
+  "scripts": {
+    "start": "npx http-server . -p 3000 -c-1",
+    "dev": "npx live-server --port=3000 --no-browser",
+    "build": "npm run minify-css && npm run minify-js",
+    "minify-css": "npx clean-css-cli styles/main.css -o styles/main.min.css",
+    "minify-js": "npx terser scripts/main.js -o scripts/main.min.js --compress --mangle",
+    "generate-icons": "node icons/create-icons.js",
+    "lighthouse": "npx lighthouse http://localhost:3000 --output html --output-path ./lighthouse-report.html",
+    "test-pwa": "npx pwa-asset-generator icons/icon-512x512.png icons/ --manifest manifest.json",
+    "validate": "npm run validate-html && npm run validate-css && npm run validate-js",
+    "validate-html": "npx html-validate index.html",
+    "validate-css": "npx stylelint styles/main.css",
+    "validate-js": "npx eslint scripts/main.js",
+    "deploy": "npm run build && npm run generate-icons",
+    "serve-https": "npx http-server . -p 3000 -S -C cert.pem -K key.pem"
+  },
+  "keywords": [
+    "pwa",
+    "mobile-dashboard",
+    "education",
+    "arabic",
+    "rtl",
+    "responsive",
+    "offline-first",
+    "service-worker"
+  ],
+  "author": "Refaq Academy",
+  "license": "MIT",
+  "devDependencies": {
+    "clean-css-cli": "^5.6.2",
+    "eslint": "^8.57.0",
+    "html-validate": "^8.7.4",
+    "http-server": "^14.1.1",
+    "lighthouse": "^11.4.0",
+    "live-server": "^1.2.2",
+    "pwa-asset-generator": "^6.3.1",
+    "stylelint": "^16.1.0",
+    "terser": "^5.26.0"
+  },
+  "optionalDependencies": {
+    "canvas": "^2.11.2"
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "not dead",
+    "not ie 11"
+  ],
+  "pwa": {
+    "name": "نظام إدارة الفروع",
+    "short_name": "إدارة الفروع",
+    "theme_color": "#4ECDC4",
+    "background_color": "#F8FFFE",
+    "display": "standalone",
+    "orientation": "portrait-primary",
+    "start_url": "/",
+    "scope": "/"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/refaq-academy/mobile-dashboard.git"
+  },
+  "bugs": {
+    "url": "https://github.com/refaq-academy/mobile-dashboard/issues"
+  },
+  "homepage": "https://refaq-academy.github.io/mobile-dashboard"
+}
